@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 text-center mt-5">
+        <h1 class="display-4 fw-bold text-primary">Welcome to the Placement Portal</h1>
+        <p class="lead mt-3">Connecting top talent with leading companies. Manage placement drives, track applications, and streamline campus recruitment.</p>
+        
+        <div class="mt-4">
+            <a href="/login" class="btn btn-primary btn-lg me-2 mb-2">Portal Login</a>
+            
+            <a href="/register/student" class="btn btn-outline-dark btn-lg me-2 mb-2">Student Register</a>
+            <a href="/register/company" class="btn btn-outline-dark btn-lg mb-2">Company Register</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

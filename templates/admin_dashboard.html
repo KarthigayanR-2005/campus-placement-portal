@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="mt-4">
+    <h2>Admin Control Panel</h2>
+    <p class="text-muted">Manage users, companies, and placement drives.</p>
+    
+    <div class="row mt-4">
+        <div class="col-md-3">
+            <div class="card text-center shadow-sm bg-primary text-white mb-3">
+                <div class="card-body">
+                    <h6 class="card-title">Total Students</h6>
+                    <p class="display-6">{{ students }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-center shadow-sm bg-success text-white mb-3">
+                <div class="card-body">
+                    <h6 class="card-title">Approved Companies</h6>
+                    <p class="display-6">{{ companies }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-center shadow-sm bg-warning text-dark mb-3">
+                <div class="card-body">
+                    <h6 class="card-title">Pending Approvals</h6>
+                    <p class="display-6">{{ pending }}</p>
+                    <a href="/admin/manage_companies" class="btn btn-sm btn-dark mt-2">Review Now</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-center shadow-sm bg-info text-white mb-3">
+                <div class="card-body">
+                    <h6 class="card-title">Total Drives</h6>
+                    <p class="display-6">{{ drives }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-5">
+        <a href="/logout" class="btn btn-danger">Logout</a>
+    </div>
+</div>
+{% endblock %}

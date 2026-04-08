@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2>Welcome, {{ student.full_name }}!</h2>
+            <p class="text-muted mb-0">Roll Number: {{ student.roll_number }}</p>
+        </div>
+        <a href="/logout" class="btn btn-danger">Logout</a>
+    </div>
+    
+    <hr>
+    <h4 class="mt-4 mb-3">Available Placement Drives</h4>
+    
+    <div class="row">
+        {% for drive in drives %}
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm h-100 border-primary border-opacity-25">
+                <div class="card-header bg-white pb-0 border-0 pt-3">
+                    <h5 class="card-title text-primary fw-bold">{{ drive.job_title }}</h5>
+                    </div>
+                <div class="card-body">
+                    <p class="card-text text-secondary">{{ drive.job_description }}</p>
+                    
+                    <div class="bg-light p-2 rounded mb-2">
+                        <small class="d-block"><strong>Eligibility:</strong> {{ drive.eligibility_criteria }}</small>
+                        <small class="d-block text-danger"><strong>Deadline:</strong> {{ drive.application_deadline.strftime('%Y-%m-%d') }}</small>
+                    </div>
+                </div>
+                <div class="card-footer bg-white border-top-0 pb-3">
+                    {% if applied_drives and drive.id in applied_drives %}
+                        {% set current_status = applied_drives[drive.id] %}
+                        
+                        {% if current_status == 'Accepted' %}
+                            <button class="btn btn-success w-100 fw-bold" disabled>🎉 You're Hired! (Accepted)</button>
+                        {% elif current_status == 'Rejected' %}
+                            <button class="btn btn-outline-danger w-100" disabled>Not Selected</button>
+                        {% else %}
+                            <button class="btn btn-secondary w-100" disabled>Application Under Review</button>
+                        {% endif %}
+                        
+                    {% else %}
+                        <a href="/student/apply/{{ drive.id }}" class="btn btn-primary w-100">Apply for Role</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        
+        {% else %}
+        <div class="col-12 text-center mt-5">
+            <h5 class="text-muted">No placement drives are currently available. Check back later!</h5>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock %}

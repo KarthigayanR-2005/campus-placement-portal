@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="mt-4">
+    <h2>Welcome, {{ company.company_name }}</h2>
+    <p class="text-muted">HR Contact: {{ company.hr_contact }}</p>
+
+    {% if company.approval_status == 'Pending' %}
+        <div class="alert alert-warning shadow-sm mt-4">
+            <h4 class="alert-heading"><i class="bi bi-hourglass-split"></i> Account Pending Approval</h4>
+            <p>Your registration has been received and is currently being reviewed by the Institute Admin. You will be able to create placement drives once your account is approved.</p>
+        </div>
+    
+    {% elif company.approval_status == 'Rejected' %}
+        <div class="alert alert-danger shadow-sm mt-4">
+            <h4 class="alert-heading">Registration Rejected</h4>
+            <p>We are sorry, but your registration to the portal was not approved by the institute.</p>
+        </div>
+
+    {% elif company.approval_status == 'Approved' %}
+        <div class="row mt-4">
+            <div class="col-12 d-flex justify-content-between align-items-center mb-3">
+                <h4>Your Placement Drives</h4>
+                <a href="/company/create_drive" class="btn btn-primary">+ Post New Drive</a>
+            </div>
+            
+            {% for drive in drives %}
+            <div class="col-md-6 mb-4">
+                <div class="card shadow-sm border-primary border-opacity-25 h-100">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">{{ drive.job_title }}</h5>
+                        <p class="text-muted small mb-2">Deadline: {{ drive.application_deadline.strftime('%Y-%m-%d') }}</p>
+                        <p class="card-text">{{ drive.job_description | truncate(80) }}</p>
+                        
+                        <hr>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="badge bg-secondary">Applications: {{ drive.applications|length }}</span>
+                            <a href="/company/drive/{{ drive.id }}/applicants" class="btn btn-sm btn-outline-primary">View Applicants</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <div class="col-12">
+                <div class="card shadow-sm">
+                    <div class="card-body text-center text-muted p-5">
+                        <p class="mb-0">You haven't posted any placement drives yet.</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <div class="mt-5">
+        <a href="/logout" class="btn btn-danger">Logout</a>
+    </div>
+</div>
+{% endblock %}
