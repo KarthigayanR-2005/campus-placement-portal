@@ -16,13 +16,19 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Register</a>
-                    </li>
-                </ul>
+    {% if not session.get('user_id') %}
+        <li class="nav-item">
+            <a class="nav-link text-white" href="{{ url_for('login') }}">Login</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" href="{{ url_for('register_student') }}">Register</a>
+        </li>
+    {% else %}
+        <li class="nav-item">
+            <a class="nav-link text-white" href="{{ url_for('logout') }}">Logout</a>
+        </li>
+    {% endif %}
+</ul>
             </div>
         </div>
     </nav>

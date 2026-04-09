@@ -1,16 +1,68 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<div class="row justify-content-center">
-    <div class="col-md-8 text-center mt-5">
-        <h1 class="display-4 fw-bold text-primary">Welcome to the Placement Portal</h1>
-        <p class="lead mt-3">Connecting top talent with leading companies. Manage placement drives, track applications, and streamline campus recruitment.</p>
+<style>
+    /* Unique Background & Animations */
+    .hero-section {
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        border-radius: 20px;
+        padding: 80px 40px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        margin-top: 50px;
+    }
+    .role-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: none;
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(10px);
+    }
+    .role-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    }
+    .btn-gradient {
+        background: linear-gradient(90deg, #007bff, #0056b3);
+        color: white;
+        border: none;
+    }
+    .btn-gradient:hover {
+        background: linear-gradient(90deg, #0056b3, #004085);
+        color: white;
+    }
+</style>
+
+<div class="container">
+    <div class="hero-section text-center">
+        <h1 class="display-3 fw-extrabold text-dark mb-3"><span class="text-primary">Student Placement Nexus</span></h1>
+        <p class="lead text-secondary mx-auto mb-5" style="max-width: 700px;">
+            The bridge between academic excellence and professional success. Our portal streamlines the journey from campus to career.
+        </p>
         
-        <div class="mt-4">
-            <a href="/login" class="btn btn-primary btn-lg me-2 mb-2">Portal Login</a>
-            
-            <a href="/register/student" class="btn btn-outline-dark btn-lg me-2 mb-2">Student Register</a>
-            <a href="/register/company" class="btn btn-outline-dark btn-lg mb-2">Company Register</a>
+        <div class="d-flex justify-content-center gap-3">
+            <a href="/login" class="btn btn-gradient btn-lg px-5 shadow-sm">Portal Login</a>
+        </div>
+    </div>
+
+    <div class="row mt-5 text-center g-4">
+        <div class="col-md-6">
+            <div class="card role-card p-4 h-100">
+                <div class="card-body">
+                    <div class="display-6 text-primary mb-3"><i class="bi bi-mortarboard"></i></div>
+                    <h3 class="fw-bold">For Students</h3>
+                    <p class="text-muted small">Explore dream companies, track your applications, and land your first job with ease.</p>
+                    <a href="/register/student" class="btn btn-outline-primary w-100 mt-3">Join as Student</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card role-card p-4 h-100">
+                <div class="card-body">
+                    <div class="display-6 text-success mb-3"><i class="bi bi-building"></i></div>
+                    <h3 class="fw-bold">For Companies</h3>
+                    <p class="text-muted small">Access top-tier talent from Amrita University and manage your recruitment drives efficiently.</p>
+                    <a href="/register/company" class="btn btn-outline-success w-100 mt-3">Register Organization</a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
