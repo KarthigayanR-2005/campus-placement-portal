@@ -26,6 +26,25 @@ A full-stack, role-based web application designed to streamline the university c
 To run this project locally on your machine, follow these steps:
 
 1. **Clone the repository:**
-   ```bash
-   git clone [https://github.com/KarthigayanR-2005/campus-placement-portal.git](https://github.com/KarthigayanR-2005/campus-placement-portal.git)
-   cd campus-placement-portal
+
+   Bash - git clone [https://github.com/KarthigayanR-2005/campus-placement-portal.git](https://github.com/KarthigayanR-2005/campus-placement-portal.git)
+
+   go to the present directory
+
+   Bash - cd campus-placement-portal
+
+2. **Install Dependencies:**
+   Ensure you have Python installed, then run the following command to install the required libraries:
+
+   Bash - pip install flask flask-sqlalchemy werkzeug
+
+
+3. **Run the Application:**
+   Bash - python app.py
+
+   Note: If you have multiple Python versions installed and the above fails, try:
+         python3 app.py or python -m flask run
+
+4. **Access the Portal:**
+
+   Open your browser and navigate to: http://127.0.0.1:5000
